@@ -12,7 +12,7 @@ import moment from 'moment-hijri';
 })
 export class AppComponent {
 
-  errorMessage: string = ''; 
+  //errorMessage: string = ''; 
 
   private hijriDayName: string = '';
 
@@ -53,13 +53,13 @@ export class AppComponent {
 
   toggleAndTranslateDate(): void {
     this.translate = !this.translate;
-    if (!this.isValidDate(this.dateYear, this.dateMonth, this.dateDay)) {
-      this.errorMessage = 'التاريخ غير صالح. يرجى التحقق من المدخلات.';
-      this.translate = !this.translate;  
-      return;
-    }
+    // if (!this.isValidDate(this.dateYear, this.dateMonth, this.dateDay)) {
+    //   this.errorMessage = 'التاريخ غير صالح. يرجى التحقق من المدخلات.';
+    //   this.translate = !this.translate;  
+    //   return;
+    // }
 
-    this.errorMessage = '';
+   // this.errorMessage = '';
     if (this.translate) {
 
       const hijriDate = moment(`${this.dateYear}-${this.dateMonth}-${this.dateDay}`, 'YYYY-MM-DD').format('iYYYY-iM-iD');
@@ -83,13 +83,14 @@ export class AppComponent {
       };
 
       this.hijriDayName = daysOfWeek[hijriDayOfWeek] || 'غير معروف';
+
+
     }
     this.translate = !this.translate;
-    
   }
-  isValidDate(year: string, month: string, day: string): boolean {
-    const date = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD', true);
-    return date.isValid();  
-  }
+  // isValidDate(year: string, month: string, day: string): boolean {
+  //   const date = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD', true);
+  //   return date.isValid();  
+  // }
   title = 'date-translate';
 }
